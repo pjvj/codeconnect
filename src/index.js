@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 
-
 import NavBar from './components/navbar'
 import PersonDetails from './components/person_details';
 //import Graph from './components/graph';
@@ -18,8 +17,38 @@ class App extends Component {
     }
 
     tagSearch(term) {
-        /*HAMARISearch({key:API_KEY,term:term},(tags)=>{*/
-            this.setState({tags: "greedy"});
+            this.setState({tags: term});
+
+            /*fetch('http://localhost:8000/questionslist/?tag=dp&numberq=15',
+                {
+                    crossDomain:true,
+                    method:"get",
+                    mode:'no-cors',
+                    header:{
+                        "Content-type":"application/json"
+                    }
+                }).then(response=>{return response.JSON()}).then(function (data) {
+                    console.log(JSON.stringify(data));
+
+            }).catch(function (err){
+                console.log((err));
+            })*/
+
+        let xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === 4) {
+                console.log(this.responseText);
+            }
+        });
+
+        xhr.open("GET", "http://localhost:8000/questionslist/?tag=dp&numberq=15");
+        xhr.setRequestHeader("content-type", "application/json");
+        xhr.setRequestHeader("Access-Control-Allow-Origin","*");
+
+        xhr.send();
+
 
 
     }
@@ -32,7 +61,9 @@ class App extends Component {
 
                 <div>
                     <NavBar/>
-                </div><br/><br/>
+                </div>
+                <br/>
+                <br/>
                 <div>
                     <PersonDetails/>
                 </div>

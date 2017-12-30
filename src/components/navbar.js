@@ -1,47 +1,45 @@
 import React from 'react';
 
-import { Navbar,Nav,Item,NavDropdown,NavItem,MenuItem} from 'react-bootstrap';
+import {Navbar, Nav, Item, NavDropdown, NavItem, MenuItem} from 'react-bootstrap';
 
-const NavBar=(props) => {
+const NavBar = (props) => {
     return (
-<div>
-        <Navbar className="navbar-nav" inverse collapseOnSelect>
-            <div className="row">
-            <div className="col-md-2 left">
+        <div>
+            <Navbar className="navbar-nav" inverse collapseOnSelect>
+                <div className="row">
+                    <div className="col-md-4">
+                        <Nav pullLeft>
+                            <NavItem className="displays">CodeConnect</NavItem>
+                        </Nav>
+                    </div>
+                    <div className="col-md-8">
+                        <Navbar.Collapse>
+                            <div className="col-md-4">
+                                <Nav>
+                                    <NavDropdown eventKey={1} className="displays" title="Features"
+                                                 id="basic-nav-dropdown">
+                                        <MenuItem eventKey={1.1}>Enhanced Coding Skills</MenuItem>
+                                        <MenuItem eventKey={1.2}>Keep A Track of Your Progress</MenuItem>
+                                        <MenuItem eventKey={1.3}>Think On Your Feet</MenuItem>
+                                        <MenuItem eventKey={1.4}>Discuss Your Code with your Buddies</MenuItem>
+                                        <MenuItem eventKey={1.5}>Set A Schedule that reminds you</MenuItem>
+                                    </NavDropdown>
+                                </Nav>
+                            </div>
+                            <div className="col-md-4 displays right">
+                                <Nav pullRight>
 
-            <Nav className="displays left">
-                <h4>CodeConnect</h4>
-            </Nav>
+                                    <NavItem eventKey={1}>Log Out</NavItem>
+                                    <NavItem eventKey={2}>Logged in</NavItem>
 
-            </div>
-                <div className="col-md-10">
-        <Navbar.Collapse>
-            <div className="col-md-6">
-            <Nav>
-                <NavDropdown eventKey={1} className="displays" title="Features" id="basic-nav-dropdown">
-                    <MenuItem eventKey={1.1}>Action</MenuItem>
-                    <MenuItem eventKey={1.2}>Another action</MenuItem>
-                    <MenuItem eventKey={1.3}>Something else here</MenuItem>
-                    <MenuItem eventKey={1.4}>Separated link</MenuItem>
-                </NavDropdown>
-            </Nav>
-            </div>
-            <div className="col-md-4 displays">
-            <Navbar.Collapse>
-                <div className="col-md-2 left">
-                <Nav eventKey={1} >Log Out</Nav>
+                                </Nav>
+                            </div>
+                        </Navbar.Collapse>
+                    </div>
                 </div>
-                <div className="col-md-2 right">
-                <Nav eventKey={2} >Logged in</Nav>
-                </div>
-            </Navbar.Collapse>
-            </div>
-        </Navbar.Collapse>
-                </div>
-            </div>
-    </Navbar>
-</div>
-);
+            </Navbar>
+            //</div>
+    );
 }
 
 export default NavBar;
