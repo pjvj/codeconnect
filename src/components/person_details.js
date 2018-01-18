@@ -1,31 +1,22 @@
 import React from 'react';
-import DataPerson from './data_person'
-const PersonDetails = (props)=> {
-    /*if(!props.person)
-        return (<h2> Loading</h2>);*/
-    const imgurl='http://www.freeiconspng.com/uploads/person-icon-23.png';
-    return(
-        <div className="col-md-7">
+
+const PersonDetails = (props) => {
+
+    const imgurl = 'http://www.freeiconspng.com/uploads/person-icon-23.png';
+    return (
+        <div className="col-md-6">
             <div className="col-md-3">
                 <img src={imgurl}/>
             </div>
-            {/*<div><DataPerson/></div>*/}
-            {/*<div className="ShowMe">
-                <h3>Name:{props.person.name}</h3>
-                <h4>UserName:{props.person.username}</h4>
-                <h4>HackerRank:{props.person.hackerrank}</h4>
-                <h4>CodeForces:{props.person.codeforces}</h4>
-                <p>AboutMe:{props.person.about}</p>
-
-            </div>*/}
-            <div className="col-md-4">
-                <h6>Name:</h6>
-                <h6>UserName:</h6>
-                <h6>HackerRank:</h6>
-                <h6>CodeForces:</h6>
-                <h6>AboutMe:</h6>
+            <div className="space">
+                <h4>Name:<span className="space2"> {props.person.name}</span></h4>
+                <h4>UserName:<span className="space3">{props.person.username}</span></h4>
+                <h4>HackerRank:<span className="space4">{props.person.hackerrank}</span></h4>
+                <h4>CodeForces:<span className="space5">{props.person.codeforces}</span></h4>
+                <h4>About:<span className="space6">{props.person.about}</span></h4>
 
             </div>
+
         </div>
     )
 }

@@ -1,0 +1,2 @@
+google-chrome --disable-web-security
+google-chrome --disable-web-security --user-ta-dir

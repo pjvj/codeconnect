@@ -1,45 +1,23 @@
 import React from 'react';
+import {Link} from "react-router";
+const NavBar = () =>{
+    return(<nav className="navbar navbar-expand-lg navbar-light bg-light navbar-inverse ">
+            <a className="navbar-brand " href="#"><span className="fill">CodeConnect</span></a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon">apoorv</span>
+            </button>
 
-import {Navbar, Nav, Item, NavDropdown, NavItem, MenuItem} from 'react-bootstrap';
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                    <li className="nav-item">
+                    </li>
+                </ul>
 
-const NavBar = (props) => {
-    return (
-        <div>
-            <Navbar className="navbar-nav" inverse collapseOnSelect>
-                <div className="row">
-                    <div className="col-md-4">
-                        <Nav pullLeft>
-                            <NavItem className="displays">CodeConnect</NavItem>
-                        </Nav>
-                    </div>
-                    <div className="col-md-8">
-                        <Navbar.Collapse>
-                            <div className="col-md-4">
-                                <Nav>
-                                    <NavDropdown eventKey={1} className="displays" title="Features"
-                                                 id="basic-nav-dropdown">
-                                        <MenuItem eventKey={1.1}>Enhanced Coding Skills</MenuItem>
-                                        <MenuItem eventKey={1.2}>Keep A Track of Your Progress</MenuItem>
-                                        <MenuItem eventKey={1.3}>Think On Your Feet</MenuItem>
-                                        <MenuItem eventKey={1.4}>Discuss Your Code with your Buddies</MenuItem>
-                                        <MenuItem eventKey={1.5}>Set A Schedule that reminds you</MenuItem>
-                                    </NavDropdown>
-                                </Nav>
-                            </div>
-                            <div className="col-md-4 displays right">
-                                <Nav pullRight>
+                <button className="btn btn-outline-success my-2 my-sm-0 " type="button"><Link to={"register"}><span className="fill ">Register</span></Link></button>
+                <button className="btn btn-outline-success my-2 my-sm-0 " type="button"><Link to={"signIn"}><span className="fill">SignIn</span></Link></button>
 
-                                    <NavItem eventKey={1}>Log Out</NavItem>
-                                    <NavItem eventKey={2}>Logged in</NavItem>
-
-                                </Nav>
-                            </div>
-                        </Navbar.Collapse>
-                    </div>
-                </div>
-            </Navbar>
-            //</div>
+            </div>
+        </nav>
     );
-}
-
+};
 export default NavBar;
