@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import{Button} from 'react-bootstrap';
 
 class SearchBar extends Component {
     constructor(props) {
@@ -8,18 +8,20 @@ class SearchBar extends Component {
             searchTerm: 'graphs'
         };
         this.onInputChange = this.onInputChange.bind(this);
-        this.props.onSearchTermChange(this.state.term);
+        this.onSearchChange(this.state.searchTerm);
 
     }
 
     onInputChange(term) {
         console.log(term);
         //this.setState({searchTerm: term});
-        this.props.onSearchTermChange(term);
+        this.onSearchChange(term);
     };
 
     onSearchChange(term) {
         this.setState({searchTerm: term});
+        localStorage.setItem("term", term);
+        console.log(this.state.searchTerm);
     };
     triggerChange(event)
     {
@@ -31,13 +33,13 @@ class SearchBar extends Component {
     render() {
         return (
             <div className="search-bar">
-                <input className="col-md-5" id={"search"}
+                <input className="col-md-5 search " id="search"
                        onKeyPress={(event)=>this.triggerChange(event)}
                        onChange={(event) => this.onSearchChange(event.target.value)}
                        value={this.state.searchTerm}/>
-                <button
+                <Button bsStyle="success"
                     onClick={() => this.onInputChange(document.getElementById('search').value)}>Search
-                </button>
+                </Button>
             </div>
         );
     }

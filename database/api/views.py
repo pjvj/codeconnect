@@ -13,8 +13,10 @@ from django.http import HttpResponse
 from rest_framework import generics
 from .models import UserInfo
 from .serializers import UserInfoSerializer
-import http.client
+import httplib
+#import http.client
 import json
+import random
 
 class UserRetrieval(APIView):
      def post(self, request, format=None):
@@ -37,12 +39,14 @@ class UserValidate(APIView):
             serializer = UserInfoSerializer(contact)
             return Response(serializer.data)
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+
 class QuestionList(APIView):
     def get(self,request,format=None):
          tag = request.GET.get('tag')
          numberq = int(request.GET.get('numberq'))
          if tag and numberq:
-             conn = http.client.HTTPConnection("codeforces.com")
+             conn = httplib.HTTPConnection("codeforces.com")
              headers = {'content-type': "application/json"}
              conn.request("GET", "/api/problemset.problems?tags="+tag, headers=headers)
              res = conn.getresponse()
@@ -50,7 +54,12 @@ class QuestionList(APIView):
              data=data.decode("utf-8")
              data=json.loads(data)
              data=list(data['result']['problems'])
+             #var = random.sample(range(0, numberq), 15)
+             #datalist=[]
+             #for i in var:
+             #     datalist.append(data[i])
              data=data[0:numberq]
              return Response(data)
+             #return Response(datalist)
          else:
              return Response(status=status.HTTP_404_NOT_FOUND)

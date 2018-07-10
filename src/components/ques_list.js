@@ -7,9 +7,10 @@ const QuesList = (props) => {
             <QuesListItem question={question}/>
         );
     });
+
     return (
         <div><br/><br/>
-            <ul className="col-md-6">
+            <ul className=" vertical-menu">
                 {quesListItem}
             </ul>
         </div>

@@ -6,35 +6,60 @@ import PersonDetails from './person_details';
 import SearchBar from './search_bar';
 import QuesList from './ques_list';
 import Footer2 from './footer2';
+import {browserHistory} from "react-router";
 
 export default class LogPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            tags: [],
+            tags: []
         };
         this.tagSearch = this.tagSearch.bind(this);
-        this.tagSearch("graphs");
+        this.onTermChange(this.state.tags);
+        //this.tagSearch("graphs");
+        //this.tagSearch(props.searchTerm);
     }
+
+    onTermChange(data) {
+        this.setState({tags:data});
+        //console.log(this.state.tags);
+        //console.log(data);
+    };
 
     tagSearch(term) {
 
-        fetch('http://localhost:8000/questionslist/?tag=' + term + '&numberq=15',
+        fetch('http://localhost:8000/questionslist/?tag=' + term + '&numberq=30',
             {
                 method: "get",
                 header: {
                     "Content-type": "application/json"
                 }
             }).then(response => {
-            return response.json()
+            return response.json();
+            console.log("response aaya");
         }).then((data) => {
-            this.setState({tags: data});
-            console.log(this.state.tags);
             //console.log(data);
+            this.onTermChange(data);
+        })
+            .catch(function (error) {
+                alert(error);
+            });
 
-        }).catch(function (err) {
-            console.log((err));
-        });
+
+
+
+        // then(response => {
+        //     return response.json()
+        //     console.log("response aaya");
+        // }).then((data) => {
+        //     this.onTermChange(data);
+        //     //this.setState({tags: data});
+        //     //console.log(this.state.tags);
+        //     console.log(data);
+        //
+        // }).catch(function (err) {
+        //     console.log((err));
+        // });
 
 
     }
@@ -43,30 +68,34 @@ export default class LogPage extends Component {
     render() {
         return (
 
-            <div>
-                <br/>
 
-                <div>
+
+            <div>
+
                     <div>
-                        <NavBar2 person={JSON.parse(localStorage.getItem("user"))}/></div>
-                </div>
-                <div>
+                        <NavBar2 person={JSON.parse(localStorage.getItem("user"))}/>
+                    </div>
+                    <br/>
+                    <br/>
+                <div className="col-md-12">
+                <div className="col-md-6">
                     <PersonDetails person={JSON.parse(localStorage.getItem("user"))}/>
 
                 </div>
-
+                <div className="col-md-6">
                 <div className="">
-                    <SearchBar onSearchTermChange={this.tagSearch.bind(this)}/>
+                    <SearchBar onSearchTermChange={this.tagSearch(localStorage.getItem("term"))}/>
 
                 </div>
                 {/*<div>*/}
                 {/*<Graph/>*/}
                 {/*</div>*/}
 
-                <div>
+                <div className="row">
                     <QuesList questions={this.state.tags}/>
                 </div>
-
+                </div>
+                </div>
                 <br/>
                 <div>
                     <Footer2 className="foot"/>

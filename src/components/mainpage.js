@@ -12,7 +12,6 @@ export default class MainPage extends Component {
             <div>
                 <NavBar/>
                 <MainDisplay/>
-                <FeatureDisplay/>
                 <Footer/>
             </div>
         );

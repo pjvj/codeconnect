@@ -4,17 +4,18 @@ const PersonDetails = (props) => {
 
     const imgurl = 'http://www.freeiconspng.com/uploads/person-icon-23.png';
     return (
-        <div className="col-md-6">
-            <div className="col-md-3">
+        <div className="col-md-7">
+            <div className="col-md-2">
                 <img src={imgurl}/>
             </div>
-            <div className="space">
-                <h4>Name:<span className="space2"> {props.person.name}</span></h4>
-                <h4>UserName:<span className="space3">{props.person.username}</span></h4>
-                <h4>HackerRank:<span className="space4">{props.person.hackerrank}</span></h4>
-                <h4>CodeForces:<span className="space5">{props.person.codeforces}</span></h4>
-                <h4>About:<span className="space6">{props.person.about}</span></h4>
-
+            <div className="space col-md-5">
+                <table className="details">
+                    <tr><td>Name:</td><td > {props.person.name}</td></tr>
+                    <tr><td >UserName:</td><td >{props.person.username}</td></tr>
+                    <tr><td >HackerRank:</td><td >{props.person.hackerrank}</td></tr>
+                    <tr><td >CodeForces:</td><td >{props.person.codeforces}</td></tr>
+                    <tr><td >About:</td><td >{props.person.about}</td></tr>
+                </table>
             </div>
 
         </div>

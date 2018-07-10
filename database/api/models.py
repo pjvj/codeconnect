@@ -13,5 +13,3 @@ class UserInfo(models.Model):
     hackerrank=models.CharField(max_length=30,unique='true')
     codeforces=models.CharField(max_length=30,unique='true')
     about=models.CharField(max_length=200)
-
-

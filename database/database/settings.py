@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-	'rest_framework',
+    'rest_framework',
     'api',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -77,7 +77,8 @@ WSGI_APPLICATION = 'database.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME':'/home/pallavi/Documents/codeconnect/database/db.sqlite3',
     }
 }
 

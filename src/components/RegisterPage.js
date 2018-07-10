@@ -1,15 +1,17 @@
 import React from 'react';
 import {browserHistory} from "react-router";
 
-export default class RegisterPage extends React.Component {
-    onSubmit1() {
+export default class RegisterPage extends React.Component
+{
+    onSubmit1()
+    {
         fetch("http://localhost:8000/userslist/",
             {
                 method: 'post',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
+                body:JSON.stringify({
                     name: document.getElementById("name").value,
                     username: document.getElementById("username").value,
                     email: document.getElementById("email").value,
